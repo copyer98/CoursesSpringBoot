@@ -1,5 +1,6 @@
 package com.hfut.glxy.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hfut.glxy.entity.Chapter;
 import com.hfut.glxy.mapper.dynamicSQLProvider.DynamicSQLProvider;
 import org.apache.ibatis.annotations.*;
@@ -17,8 +18,8 @@ import java.util.List;
  * @since JDK 1.8
  */
 @Mapper
-@Component(value = "chapterDao")
-public interface ChapterDao {
+@Component("ChapterMapper")
+public interface ChapterMapper extends BaseMapper<Chapter> {
 
     /**
      *

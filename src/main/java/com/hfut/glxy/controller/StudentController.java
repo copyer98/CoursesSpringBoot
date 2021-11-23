@@ -7,6 +7,7 @@ import com.hfut.glxy.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -17,7 +18,7 @@ import javax.servlet.http.HttpSession;
 @RequestMapping(value = "/stu")
 //@CrossOrigin(origins = "*", methods = {RequestMethod.POST, RequestMethod.GET, RequestMethod.OPTIONS, RequestMethod.DELETE}, allowedHeaders = "*")
 public class StudentController {
-
+    @Resource
     private StudentService studentService;
 
 
@@ -29,6 +30,7 @@ public class StudentController {
 
     /**
      * 获取学生个人信息
+     *
      * @param session
      * @return
      */
@@ -41,7 +43,7 @@ public class StudentController {
             return ResultUtil.fail("用户未登录或登录过期");
         }
 
-        Student stu = studentService.selectById(sid);
+        Student stu = studentService.getById(sid);
         return ResultUtil.OK(stu);
 
     }
@@ -49,19 +51,20 @@ public class StudentController {
 
     /**
      * 更新学生个人信息
+     *
      * @param student
      * @param session
      * @return
      */
     @PostMapping("/info/update")
-    public Result updateInfo(@RequestBody Student student, HttpSession session){
+    public Result updateInfo(@RequestBody Student student, HttpSession session) {
 
         String sid = (String) session.getAttribute("sid");
         //String sid ="2015213749";
         student.setId(sid);
-        if (studentService.updateById(student)){
+        if (studentService.updateById(student)) {
             return ResultUtil.OK();
-        }else {
+        } else {
             return ResultUtil.updateError();
         }
 

@@ -88,7 +88,7 @@ public class CommentController {
         comment.setCreateTime(new java.sql.Date(System.currentTimeMillis()));
 
         try {
-            if (commentService.insert(comment)) {
+            if (commentService.save(comment)) {
                 comment = commentService.getCommentById(comment.getId());
                 return ResultUtil.OK(comment);
             }

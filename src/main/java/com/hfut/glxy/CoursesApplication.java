@@ -10,13 +10,16 @@
  */
 package com.hfut.glxy;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication(scanBasePackages = {"com.hfut.glxy"})
-@EnableTransactionManagement //开启事务管理，因为service类中需要事务注解进行事务管理
+//开启事务管理，因为service类中需要事务注解进行事务管理
+@MapperScan("com.hfut.glxy.mapper")
+@EnableTransactionManagement
 @ServletComponentScan(basePackages = "com.hfut.glxy.filter")
 public class CoursesApplication {
     public static void main(String[] args) {

@@ -2,7 +2,6 @@ package com.hfut.glxy.mapper;
 
 import com.hfut.glxy.entity.KnowledgePoint;
 import com.hfut.glxy.mapper.dynamicSQLProvider.DynamicSQLProvider;
-import io.swagger.models.auth.In;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 

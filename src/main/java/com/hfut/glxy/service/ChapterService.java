@@ -1,5 +1,6 @@
 package com.hfut.glxy.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.hfut.glxy.dto.PageResult;
 import com.hfut.glxy.entity.Chapter;
 
@@ -15,7 +16,7 @@ import java.util.Map;
  * @author students_ManagementSchool
  * @since JDK 1.8
  */
-public interface ChapterService {
+public interface ChapterService extends  IService<Chapter> {
 
     /**
          *

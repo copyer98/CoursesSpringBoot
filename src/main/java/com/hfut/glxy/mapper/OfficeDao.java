@@ -3,7 +3,7 @@ package com.hfut.glxy.mapper;
 import com.hfut.glxy.entity.Course;
 import com.hfut.glxy.entity.CourseInfo;
 import com.hfut.glxy.entity.Office;
-import io.swagger.models.auth.In;
+
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 

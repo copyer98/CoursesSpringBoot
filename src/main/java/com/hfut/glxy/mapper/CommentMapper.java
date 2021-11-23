@@ -1,7 +1,8 @@
 package com.hfut.glxy.mapper;
 
-import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hfut.glxy.entity.Comment;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +12,7 @@ import java.util.List;
  * @author chenliangliang
  * @date 2017/11/29
  */
-@Component
+@Mapper
 public interface CommentMapper extends BaseMapper<Comment> {
 
 

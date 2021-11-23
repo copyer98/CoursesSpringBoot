@@ -1,6 +1,6 @@
 package com.hfut.glxy.mapper;
 
-import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hfut.glxy.entity.Office;
 import org.springframework.stereotype.Component;
 

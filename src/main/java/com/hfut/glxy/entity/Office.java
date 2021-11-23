@@ -1,8 +1,9 @@
 package com.hfut.glxy.entity;
 
-import com.baomidou.mybatisplus.activerecord.Model;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.enums.IdType;
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,7 +16,7 @@ import java.util.Date;
  */
 @Data
 @NoArgsConstructor
-public class Office extends Model<Office>{
+public class Office extends Model<Office> {
 
     @TableId(type = IdType.AUTO)
     private Integer id;
@@ -110,8 +111,5 @@ public class Office extends Model<Office>{
         this.createTime = createTime;
     }
 
-    @Override
-    protected Serializable pkVal() {
-        return id;
-    }
+
 }

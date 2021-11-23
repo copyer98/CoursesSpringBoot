@@ -18,8 +18,7 @@ public class PropertiesUtil {
 
     private Properties prop;
     private File propertiesFile;
-    private String lineSeparator = java.security.AccessController.doPrivileged(
-            new sun.security.action.GetPropertyAction("line.separator"));
+
 
 
     public PropertiesUtil(File file) throws Exception {

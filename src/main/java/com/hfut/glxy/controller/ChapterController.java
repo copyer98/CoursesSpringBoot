@@ -22,7 +22,7 @@ import java.util.UUID;
  * @since JDK 1.8
  */
 @Controller
-@CrossOrigin(origins = "*", methods = {RequestMethod.POST, RequestMethod.GET, RequestMethod.OPTIONS, RequestMethod.DELETE}, allowedHeaders = "*")
+
 public class ChapterController {
 
     @Resource

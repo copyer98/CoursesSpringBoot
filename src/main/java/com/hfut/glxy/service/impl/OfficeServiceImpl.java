@@ -1,6 +1,6 @@
 package com.hfut.glxy.service.impl;
 
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hfut.glxy.entity.Office;
 import com.hfut.glxy.mapper.OfficeMapper;
 import com.hfut.glxy.service.OfficeService;

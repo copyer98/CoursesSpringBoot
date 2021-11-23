@@ -3,6 +3,7 @@ package com.hfut.glxy.config;
 import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.util.unit.DataSize;
 
 import javax.servlet.MultipartConfigElement;
 
@@ -18,10 +19,10 @@ public class AppConfig {
     public MultipartConfigElement multipartConfigElement() {
         MultipartConfigFactory factory = new MultipartConfigFactory();
         /*设置文件大小限制 ,超了，页面会抛出异常信息，这时候就需要进行异常信息的处理了;*/
-        factory.setMaxFileSize("200MB");
+        factory.setMaxFileSize(DataSize.parse("200MB"));
         /// 设置总上传数据总大小
 
-        factory.setMaxRequestSize("200MB");
+        factory.setMaxRequestSize(DataSize.parse("200MB"));
 
         //Sets the directory location where files will be stored.
 

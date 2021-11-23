@@ -11,9 +11,10 @@
 
 package com.hfut.glxy.entity;
 
-import com.baomidou.mybatisplus.activerecord.Model;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.enums.IdType;
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.NotBlank;
@@ -23,7 +24,7 @@ import java.util.Date;
 
 /*@Data
 @NoArgsConstructor*/
-public class Homework extends Model<Homework>{
+public class Homework extends Model<Homework> {
 
     @TableId(type = IdType.AUTO)
     private Integer id;
@@ -42,10 +43,7 @@ public class Homework extends Model<Homework>{
     private String courseId;
 
 
-    @Override
-    protected Serializable pkVal() {
-        return id;
-    }
+
 
     public Integer getId() {
         return id;

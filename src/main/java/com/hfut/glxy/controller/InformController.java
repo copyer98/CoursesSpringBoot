@@ -44,9 +44,9 @@ public class InformController {
         //String courseId="tejnk76rfe";
         inform.setCourseId(courseId);
         try {
-            if (informService.insert(inform)) {
+            informService.save(inform);
                 return ResultUtil.OK();
-            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }

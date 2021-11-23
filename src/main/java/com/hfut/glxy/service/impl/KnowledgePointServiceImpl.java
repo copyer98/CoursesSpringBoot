@@ -6,7 +6,6 @@ import com.hfut.glxy.entity.KnowledgePoint;
 import com.hfut.glxy.entity.Unit;
 import com.hfut.glxy.mapper.*;
 import com.hfut.glxy.service.KnowledgePointService;
-import com.hfut.glxy.utils.SortUtil;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,7 +39,7 @@ public class KnowledgePointServiceImpl implements KnowledgePointService {
     private UnitDao unitDao;
 
     @Resource
-    private ChapterDao chapterDao;
+    private ChapterMapper chapterMapper;
 
     @Resource
     private CourseDao courseDao;
@@ -452,7 +451,7 @@ public class KnowledgePointServiceImpl implements KnowledgePointService {
         for (Unit unitI:units){
 
             String chapter_id=chapter_unitDao.getChapterByUnit(unitI.getId());
-            Chapter chapter=chapterDao.queryChapterById(chapter_id);
+            Chapter chapter= chapterMapper.queryChapterById(chapter_id);
             if (chapter==null){
                 throw new RuntimeException("章不存在");
             }

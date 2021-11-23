@@ -12,9 +12,7 @@ import com.hfut.glxy.utils.*;
 import net.coobird.thumbnailator.Thumbnails;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.jodconverter.DocumentConverter;
-import org.jodconverter.document.DefaultDocumentFormatRegistry;
-import org.jodconverter.office.OfficeException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -35,7 +33,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping(value = "/file")
-//@CrossOrigin(origins = "*",methods = {RequestMethod.PUT,RequestMethod.POST,RequestMethod.GET,RequestMethod.OPTIONS,RequestMethod.DELETE})
+
 public class FileController {
 
 
@@ -57,13 +55,13 @@ public class FileController {
 
     private VideoService videoService;
 
-    private DocumentConverter converter;
+    //private DocumentConverter converter;
 
     @Autowired
-    protected FileController(PictureService pictureService, DocumentConverter converter,
+    protected FileController(PictureService pictureService,
                              OfficeService officeService, VideoService videoService) {
         this.pictureService = pictureService;
-        this.converter = converter;
+
         this.officeService = officeService;
         this.videoService=videoService;
     }
@@ -114,7 +112,7 @@ public class FileController {
                 Thumbnails.of(in).scale(1.0).outputQuality(0.25f).toFile(new File(picPath + filename));
                 picture.setDescription(originalFilename);
                 picture.setUrl("/pic/" + filename);
-                if (pictureService.insert(picture)) {
+                if (pictureService.save(picture)) {
                     return ResultUtil.OK(picture);
                 }
             } catch (Exception e) {
@@ -167,7 +165,7 @@ public class FileController {
 //            } else {
 //                map.put("cover", null);
 //            }
-           if( videoService.insert(video)){
+           if( videoService.save(video)){
 
                /*System.out.println("video_id: "+video.getId() );*/
                 String picture_id="2";
@@ -268,11 +266,11 @@ public class FileController {
 
                 outFileName = viewPath + fileName + ".pdf";
                 //文件类型转换
-                converter.convert(inFile)
-                        .as(DefaultDocumentFormatRegistry.getFormatByExtension(fileType))
-                        .to(new File(filePath + outFileName))
-                        .as(DefaultDocumentFormatRegistry.getFormatByExtension("pdf"))
-                        .execute();
+                //converter.convert(inFile)
+                //        .as(DefaultDocumentFormatRegistry.getFormatByExtension(fileType))
+                //        .to(new File(filePath + outFileName))
+                //        .as(DefaultDocumentFormatRegistry.getFormatByExtension("pdf"))
+                //        .execute();
 
             } else {
                 outFileName = inFileName;
@@ -291,11 +289,11 @@ public class FileController {
             office.setFileUrl("/"+inFileName);
             office.setCover("/pic/"+cover);
 
-            if (officeService.insert(office)) {
+            if (officeService.save(office)) {
                 return ResultUtil.OK(office);
             }
 
-        } catch (IOException | OfficeException e) {
+        } catch (IOException  e) {
             e.printStackTrace();
         }
 

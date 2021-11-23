@@ -1,6 +1,6 @@
 package com.hfut.glxy.service;
 
-import com.baomidou.mybatisplus.service.IService;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.github.pagehelper.PageInfo;
 import com.hfut.glxy.entity.Inform;
 
@@ -12,7 +12,7 @@ import com.hfut.glxy.entity.Inform;
 public interface InformService extends IService<Inform> {
 
 
-    void save(Inform inform) throws RuntimeException;
+
 
     PageInfo<Inform> listAll(int pageNum, String cid);
 

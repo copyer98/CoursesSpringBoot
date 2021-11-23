@@ -5,8 +5,6 @@ import com.hfut.glxy.entity.Course;
 import com.hfut.glxy.entity.Office;
 import com.hfut.glxy.entity.Video;
 import com.hfut.glxy.service.RelationService;
-import com.sun.org.apache.regexp.internal.RE;
-import org.springframework.boot.autoconfigure.social.FacebookAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
  * @since JDK 1.8
  */
 @Mapper
-@Component(value = "course_chapterDao")
+
 public interface Course_ChapterDao {
 
     /**

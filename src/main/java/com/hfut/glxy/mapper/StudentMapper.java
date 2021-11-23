@@ -1,7 +1,8 @@
 package com.hfut.glxy.mapper;
 
-import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hfut.glxy.entity.Student;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Component;
  * @author chenliangliang
  * @date: 2017/12/19
  */
-@Component
+@Mapper
 public interface StudentMapper extends BaseMapper<Student> {
 
     Student findNameAndImgById(@Param("sid") String sid);

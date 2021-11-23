@@ -1,6 +1,6 @@
 package com.hfut.glxy.service;
 
-import com.baomidou.mybatisplus.service.IService;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.github.pagehelper.PageInfo;
 import com.hfut.glxy.entity.Homework;
 

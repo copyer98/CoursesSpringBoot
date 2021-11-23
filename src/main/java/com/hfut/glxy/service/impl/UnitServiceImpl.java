@@ -32,7 +32,7 @@ public class UnitServiceImpl implements UnitService {
     @Resource
     private UnitDao unitDao;
     @Resource
-    private ChapterDao chapterDao;
+    private ChapterMapper chapterMapper;
     @Resource
     private Chapter_UnitDao chapter_unitDao;
     @Resource
@@ -65,7 +65,7 @@ public class UnitServiceImpl implements UnitService {
         String unit_id=unit.getId();
 
         //检验所属章是否存在
-        Chapter chapter=chapterDao.queryChapterById(chapter_id);
+        Chapter chapter= chapterMapper.queryChapterById(chapter_id);
         if (chapter==null){
             return 0;
         }

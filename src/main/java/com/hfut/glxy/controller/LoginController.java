@@ -169,7 +169,7 @@ public class LoginController {
         stu.setName(loginBody.getName());
         stu.setEmail(loginBody.getEmail());
         stu.setPassword(loginBody.getPassword());
-        if (studentService.insert(stu)) {
+        if (studentService.save(stu)) {
             session.removeAttribute("code");
             return ResultUtil.OK();
         } else {

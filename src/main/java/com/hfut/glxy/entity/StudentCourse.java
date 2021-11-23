@@ -22,9 +22,8 @@
 
 package com.hfut.glxy.entity;
 
-import com.baomidou.mybatisplus.activerecord.Model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import io.swagger.models.auth.In;
+
 
 import java.io.Serializable;
 import java.sql.Timestamp;

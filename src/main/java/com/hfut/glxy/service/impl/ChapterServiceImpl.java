@@ -1,5 +1,6 @@
 package com.hfut.glxy.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hfut.glxy.dto.PageResult;
 import com.hfut.glxy.entity.Chapter;
 import com.hfut.glxy.entity.Course;
@@ -9,10 +10,8 @@ import com.hfut.glxy.mapper.Course_ChapterDao;
 import com.hfut.glxy.service.ChapterService;
 import com.hfut.glxy.service.UnitService;
 import com.hfut.glxy.utils.SortUtil;
-import org.apache.tomcat.util.buf.CharChunk;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -29,10 +28,10 @@ import java.util.Map;
  * @since JDK 1.8
  */
 @Service
-public class ChapterServiceImpl implements ChapterService {
+public class ChapterServiceImpl extends ServiceImpl<ChapterMapper,Chapter> implements ChapterService {
 
     @Resource
-    private ChapterDao chapterDao;
+    private ChapterMapper chapterMapper;
     @Resource
     private CourseDao courseDao;
     @Resource
@@ -65,7 +64,7 @@ public class ChapterServiceImpl implements ChapterService {
         int addChapterSuccess;
         int addCourse_chapterSuccess;
 
-        addChapterSuccess=chapterDao.addChapter(chapter);
+        addChapterSuccess= chapterMapper.addChapter(chapter);
         addCourse_chapterSuccess=course_chapterDao.addRelation(course_id,chapter.getId());
 
         if (addChapterSuccess!=1||addCourse_chapterSuccess!=1){
@@ -73,7 +72,7 @@ public class ChapterServiceImpl implements ChapterService {
         }
 
         String chapter_id=chapter.getId();
-        Chapter chapterG=chapterDao.queryChapterById(chapter_id);
+        Chapter chapterG= chapterMapper.queryChapterById(chapter_id);
 
         return chapter;
     }
@@ -99,7 +98,7 @@ public class ChapterServiceImpl implements ChapterService {
         }*/
 
         int updateChapterSuccess;
-        updateChapterSuccess=chapterDao.updateChapter(chapter);
+        updateChapterSuccess= chapterMapper.updateChapter(chapter);
 
         if (updateChapterSuccess!=1){
             throw new RuntimeException("更新失败");
@@ -143,7 +142,7 @@ public class ChapterServiceImpl implements ChapterService {
         int deleteChapterSuccess;
         int deleteRelationSuccess;
 
-        deleteChapterSuccess=chapterDao.putToDustbin(chapter_id);
+        deleteChapterSuccess= chapterMapper.putToDustbin(chapter_id);
         deleteRelationSuccess=course_chapterDao.deleteRelation(chapter_id);
 
         if (deleteChapterSuccess!=1||deleteRelationSuccess!=1){
@@ -168,7 +167,7 @@ public class ChapterServiceImpl implements ChapterService {
 
         List<Chapter> chapters;
 
-        chapters=chapterDao.getAllChapters();
+        chapters= chapterMapper.getAllChapters();
 
         SortUtil.sortChapters(chapters);
 
@@ -195,7 +194,7 @@ public class ChapterServiceImpl implements ChapterService {
             return null;
         }*/
 
-        Chapter chapterGet=chapterDao.queryChapterById(chapter_id);
+        Chapter chapterGet= chapterMapper.queryChapterById(chapter_id);
         if (chapter==null){
             throw new RuntimeException("未知错误！");
         }
@@ -226,7 +225,7 @@ public class ChapterServiceImpl implements ChapterService {
         }
 
         for (String chapter_id:chapter_ids){
-            chapter=chapterDao.queryChapterById(chapter_id);
+            chapter= chapterMapper.queryChapterById(chapter_id);
             chapters.add(chapter);
         }
 
@@ -263,7 +262,7 @@ public class ChapterServiceImpl implements ChapterService {
             return null;
         }
         for (String chapter_id:chapter_ids){
-            Chapter chapter=chapterDao.queryChapterById(chapter_id);
+            Chapter chapter= chapterMapper.queryChapterById(chapter_id);
             if (chapter==null){
                 throw new RuntimeException("章不存在");
             }

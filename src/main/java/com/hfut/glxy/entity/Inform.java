@@ -11,9 +11,10 @@
 
 package com.hfut.glxy.entity;
 
-import com.baomidou.mybatisplus.activerecord.Model;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.enums.IdType;
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
@@ -25,7 +26,7 @@ import java.util.Date;
 
 @Data
 @NoArgsConstructor
-public class Inform extends Model<Inform>{
+public class Inform extends Model<Inform> {
 
     @TableId(type = IdType.AUTO)
     private Integer id;
@@ -45,10 +46,7 @@ public class Inform extends Model<Inform>{
 
 
 
-    @Override
-    protected Serializable pkVal() {
-        return this.id;
-    }
+
 
     public Integer getId() {
         return id;

@@ -4,7 +4,6 @@ import com.hfut.glxy.dto.Result;
 import com.hfut.glxy.entity.*;
 import com.hfut.glxy.mapper.PictureDao;
 import com.hfut.glxy.service.InforService;
-import javafx.scene.chart.ValueAxis;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 

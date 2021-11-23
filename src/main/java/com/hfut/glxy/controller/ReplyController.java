@@ -64,7 +64,7 @@ public class ReplyController {
             reply.setStudentId(sid);
             reply.setCreateTime(new Date());
             reply.setUpdateTime(new Date());
-            if (replyService.insert(reply)) {
+            if (replyService.save(reply)) {
                 Reply rep = replyService.getReplyById(reply.getId());
                 //更新评论回复数
                 commentMapper.increaseReply(reply.getCommentId());

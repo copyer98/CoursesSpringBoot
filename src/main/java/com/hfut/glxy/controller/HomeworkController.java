@@ -131,7 +131,7 @@ public class HomeworkController {
             String courseId = (String) session.getAttribute("courseId");
             //String courseId="rnt6576";
             homework.setCourseId(courseId);
-            if (homeworkService.insert(homework)) {
+            if (homeworkService.save(homework)) {
                 return ResultUtil.OK();
             }
         } catch (Exception e) {

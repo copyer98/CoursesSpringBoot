@@ -10,3 +10,4 @@ gen
 src/test/
 /target/
 /sh.exe.stackdump
+/src/main/resources/rebel.xml

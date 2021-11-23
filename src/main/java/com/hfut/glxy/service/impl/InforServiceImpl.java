@@ -45,7 +45,7 @@ public class InforServiceImpl implements InforService {
     @Resource
     private Course_PictureDao course_pictureDao;
     @Resource
-    private ChapterDao chapterDao;
+    private ChapterMapper chapterMapper;
     @Resource
     private ChapterService chapterService;
     @Resource
@@ -437,7 +437,7 @@ public class InforServiceImpl implements InforService {
         if (chapter_id==null){
             throw new RuntimeException("章不存在，未知错误");
         }
-        Chapter chapter=chapterDao.queryChapterById(chapter_id);
+        Chapter chapter= chapterMapper.queryChapterById(chapter_id);
         if (chapter==null){
             throw new RuntimeException("章不存在，未知错误");
         }

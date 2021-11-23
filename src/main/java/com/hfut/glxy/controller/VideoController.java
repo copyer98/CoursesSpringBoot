@@ -62,7 +62,7 @@ public class VideoController {
         }
 
         try{
-            if (videoService.deleteById(Integer.parseInt(video_id))){
+            if (videoService.removeById(Integer.parseInt(video_id))){
 
                 if (unit_id==null){
 
@@ -129,7 +129,7 @@ public class VideoController {
         List<Video> videos=new ArrayList<>();
         String [] video_ids=unit_videoDao.getVideosByUnit(unit_id,startPage,pageSize);
         for (String video_id:video_ids){
-            Video video=videoService.selectById(video_id);
+            Video video=videoService.getById(video_id);
             if (video==null){
                 return new Result<>(false," gg  gg",null);
             }

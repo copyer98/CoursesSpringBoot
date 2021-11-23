@@ -9,9 +9,7 @@ import com.hfut.glxy.mapper.Course_OfficeDao;
 import com.hfut.glxy.mapper.OfficeDao;
 import com.hfut.glxy.mapper.Unit_OfficeDao;
 import com.hfut.glxy.service.OfficeService;
-import com.sun.org.apache.regexp.internal.RE;
-import org.apache.ibatis.annotations.Param;
-import org.omg.CORBA.TRANSACTION_MODE;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -70,7 +68,7 @@ public class OfficeController {
         }
 
         try{
-            if (officeService.deleteById(Integer.parseInt(office_id))){
+            if (officeService.removeById(Integer.parseInt(office_id))){
 
                 if (unit_id==null){
 
@@ -125,7 +123,7 @@ public class OfficeController {
         List<Office> offices=new ArrayList<>();
         String [] office_ids=unit_officeDao.getOfficesByUnit(unit_id,startPage,pageSize);
         for (String office_id:office_ids){
-            Office office=officeService.selectById(office_id);
+            Office office=officeService.getById(office_id);
             if (office==null){
                 return new Result<>(false," gg  gg",null);
             }
@@ -195,7 +193,7 @@ public class OfficeController {
         List<Office> offices=new ArrayList<>();
         String [] office_ids=course_officeDao.getCourseInfosByCourse(course_id);
         for (String office_id:office_ids){
-            Office office=officeService.selectById(office_id);
+            Office office=officeService.getById(office_id);
             if (office==null){
                 return new Result<>(false,"获取失败",null);
             }
@@ -229,7 +227,7 @@ public class OfficeController {
         }
 
         try{
-            if (officeService.deleteById(Integer.parseInt(office_id))){
+            if (officeService.removeById(Integer.parseInt(office_id))){
 
                 if (course_id==null){
 
