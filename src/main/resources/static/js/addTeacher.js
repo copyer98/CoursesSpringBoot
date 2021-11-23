@@ -24,40 +24,38 @@
 };*/
 
 function teachersub() {
-    // if (validatetheacher() == false) {
-    // }
-    // else {
-    $.ajax({
-        url: "/addTeacher",
-        data: JSON.stringify({
-            "number": $("#tid").val(),
-            "name": $("#tname").val(),
-            "sex": $("#tsex").val(),
-            "position": $("#tposition").val(),
-            "personIntroduction": $("#tintro").val(),
-            "picture_id":$("#picture_id").val()
-        }),
-        type: 'POST',
-        async: false,
-        cache: false,
-        dataType: 'json',
-        timeout: 1000,
-        contentType: 'application/json; charset=UTF-8',
-        // beforeSend: LoadFunction,
-        error: errorFunction,
-        success: succeedFunction
-    });
+  // if (validatetheacher() == false) {
+  // }
+  // else {
+  $.ajax({
+    url: "/addTeacher",
+    data: JSON.stringify({
+      number: $("#tid").val(),
+      name: $("#tname").val(),
+      sex: $("#tsex").val(),
+      position: $("#tposition").val(),
+      personIntroduction: $("#tintro").val(),
+      picture_id: $("#picture_id").val(),
+    }),
+    type: "POST",
+    async: false,
+    cache: false,
+    dataType: "json",
+    timeout: 1000,
+    contentType: "application/json; charset=UTF-8",
+    // beforeSend: LoadFunction,
+    error: errorFunction,
+    success: succeedFunction,
+  });
 
+  function errorFunction() {
+    alert("失败了");
+  }
 
-    function errorFunction() {
-        alert("失败了");
-    }
-
-    function succeedFunction(data) {
-        alert(data.message);
-        window.location.reload();
-    }
-
+  function succeedFunction(data) {
+    alert(data.message);
+    window.location.reload();
+  }
 }
 
 /*function validatetheacher(name, id, limitLength) {
@@ -78,35 +76,33 @@ function teachersub() {
 }*/
 
 function uploadCoursePicture() {
-    var f = document.getElementById("file");
-    f.click();
+  var f = document.getElementById("file");
+  f.click();
 }
 
 function upload() {
+  var formData = new FormData($("#uploadForm")[0]);
 
-    var formData = new FormData($( "#uploadForm" )[0]);
+  $.ajax({
+    url: "/file/pic",
+    type: "post",
+    timeout: 5000,
+    contentType: false,
+    processData: false,
+    async: false,
+    cache: false,
+    data: formData,
+  })
 
-    $.ajax({
-        url: '/file/pic',
-        type: 'post',
-        timeout: 5000,
-        contentType: false,
-        processData: false,
-        async: false,
-        cache: false,
-        data:formData,
+    .done(function (data) {
+      alert("正在上传");
+      $("#showPicture").attr("src", data.data.url);
+      $("#picture_id").val(data.data.id);
     })
-
-        .done(function (data) {
-            alert("正在上传");
-            $("#showPicture").attr("src",data.data.url);
-            $("#picture_id").val(data.data.id);
-        })
-        .fail(function () {
-            console.log("error");
-        })
-        .always(function () {
-            console.log("complete");
-        });
-
+    .fail(function () {
+      console.log("error");
+    })
+    .always(function () {
+      console.log("complete");
+    });
 }
